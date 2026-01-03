@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "super-admin",
+    "credentials": ["create", "read", "update", "delete"]
+  },
+  {
+    "id": 2,
+    "name": "admin",
+    "credentials": ["create", "read", "update"]
+  },
+  {
+    "id": 3,
+    "name": "user",
+    "credentials": ["read"]
+  }
+]

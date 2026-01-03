@@ -60,13 +60,16 @@
 3.  **Install Docker and Docker Compose**:
     (For Amazon Linux 2023)
     ```bash
-    sudo yum update -y
     sudo yum install docker -y
     sudo service docker start
     sudo usermod -a -G docker ec2-user
-    # Log out and log back in to apply group changes
-    exit
-    ssh -i "your-key.pem" ec2-user@your-ec2-ip
+    # Log out and log back in to apply group changes, or run:
+    newgrp docker
+
+    # Install Buildx manually (required for Amazon Linux 2023)
+    mkdir -p ~/.docker/cli-plugins/
+    curl -SL https://github.com/docker/buildx/releases/download/v0.19.0/buildx-v0.19.0.linux-amd64 -o ~/.docker/cli-plugins/docker-buildx
+    chmod +x ~/.docker/cli-plugins/docker-buildx
     
     # Install Docker Compose
     mkdir -p ~/.docker/cli-plugins/
@@ -80,7 +83,7 @@
         - Clone your repo: `git clone <your-repo-url>`
         - CD into the directory.
     - **Option B: Copy files manually (if no git repo)**
-        - Use `scp` to copy project files to the server.
+        - Use `scp` to copy projelsct files to the server.
 
 5.  **Run the Application**:
     ```bash
