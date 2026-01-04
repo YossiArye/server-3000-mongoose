@@ -20,5 +20,6 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           cd server-3000-mongoose
-          git pull
-          docker compose up -d --build
+          git fetch --all
+          git reset --hard origin/main
+          docker compose up -d --build --no-deps app
