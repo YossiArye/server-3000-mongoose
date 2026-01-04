@@ -23,7 +23,7 @@ app.get('/websites', async function (req, res) {
     const websites = await Website.find({})
     console.log('websites')
     console.log(websites)
-    res.json({websites, build: Date.now()})
+    res.json({websites})
   } catch (error) {
     return res.status(500).send(error.message)
   }
