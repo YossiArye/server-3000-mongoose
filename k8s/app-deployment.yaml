@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: app
+        image: server-3000-mongoose-app:latest # Using the locally built image
+        imagePullPolicy: IfNotPresent # Important for local dev
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: mongo-uri
