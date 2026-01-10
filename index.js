@@ -21,7 +21,7 @@ mongoose.connect(MONGO_URI)
 app.get('/websites', async function (req, res) {
   try {
     const websites = await Website.find({})
-    console.log('websitessss')
+    console.log('websitessssqqqqq')
     console.log(websites)
     res.json({websites})
   } catch (error) {
