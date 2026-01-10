@@ -2,9 +2,6 @@
 
 This guide provides a "Lightweight" Kubernetes setup using **k3s**. This gives you the best chance of running on a **Free Tier (t2.micro)** instance, although performance will be limited.
 
-## 1. Install K3s on EC2
-Connect to your EC2 instance.
-
 # 1. Install K3s on EC2
 Connect to your EC2 instance.
 
@@ -91,3 +88,15 @@ The app uses **NodePort 30000**.
 1.  `kubectl get pods -w`
 2.  `kubectl delete pod <pod-name>`
 3.  Observe auto-recovery.
+
+## 5. Managing the Application
+
+### Viewing Logs
+To debug issues, you can view the logs of your application pod:
+```bash
+# View logs (use label selector)
+kubectl logs -l app=app
+
+# Follow logs in real-time
+kubectl logs -f -l app=app
+```

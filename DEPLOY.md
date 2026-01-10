@@ -12,11 +12,11 @@
 1.  **Clone the repository** (if not already done).
 2.  **Start the application and database**:
     ```bash
-    docker-compose up --build
+    docker compose up --build
     ```
 3.  **Seed the database** (Open a new terminal while the containers are running):
     ```bash
-    docker-compose exec app node seed.js
+    docker compose exec app node seed.js
     ```
     You should see "Database successfully seeded".
 4.  **Access the application**:
@@ -54,6 +54,10 @@
 
 2.  **Connect to your EC2 Instance**:
     ```bash
+    # Important: Set key permissions first
+    chmod 400 "your-key.pem"
+    
+    # Then connect
     ssh -i "your-key.pem" ec2-user@your-ec2-ip
     ```
 
@@ -98,6 +102,16 @@
 7.  **Verify Deployment**:
     Open your browser and navigate to `http://your-ec2-ip:3000/`.
     You should see the users JSON response.
+
+8.  **Managing the Application**:
+    - **View Logs**:
+      ```bash
+      docker compose logs -f app
+      ```
+    - **Stop App**:
+      ```bash
+      docker compose down
+      ```
 
 ## Environment Variables
 The application uses the following environment variables (defined in `.env` or `docker-compose.yml`):
